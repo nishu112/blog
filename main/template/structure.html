@@ -1,0 +1,81 @@
+{% load static %}
+ {% load bootstrap3 %}
+ {% load humanize %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head >
+
+	<title>{% block title %}Friendsbook{% endblock %}</title>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<!--
+<script src="//code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+-->
+
+</head>
+
+<body  style="padding-top: 60px;background-color: #f5f7f8 !important;">
+	<style>
+	body {
+font-family: 'Dancing Script', cursive;
+}
+	</style>
+
+	<div id="sound"></div>
+<div class="container-fluid">
+	{%for data in AllData%}
+<div class="col-sm-6">
+	<div class="alert alert-success alert-dismissible">
+    <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+    <strong>{{data.Quote}}</strong>
+		<br>
+    Created by {{data.Name}}   {{data.time|naturaltime}}<br>
+
+  </div>
+</div>
+{%endfor%}
+</div>
+</main>
+<div class="container">
+  <div class="col-sm-8 col-sm-offset-2" style="margin-top:50px;box-shadow: 0 2px 5px 0 rgba(0,0,0,0.16), 0 2px 10px 0 rgba(0,0,0,0.12);background-color:#ffff">
+	<div class="header">
+		<h2><span style="margin-right:5px;"/>Add a Quote:</h2>
+	</div>
+
+	<form action="" method="post"><input type='hidden'  />{%csrf_token %}
+
+	{% bootstrap_form form %}
+	<div class="form-group">
+      <div class="">
+        <button type="submit" class="btn btn-primary">Submit</button>
+
+      </div>
+    </div>
+
+
+	</form>
+
+</div>
+
+</div>
+
+  <script>
+
+
+
+
+
+  </script>
+
+	  {% block javascript %}
+		{% endblock  %}
+
+
+</body>
+
+</html>
